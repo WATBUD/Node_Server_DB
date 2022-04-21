@@ -16,10 +16,7 @@ class mysqlService {
     try {
       this.axd = 55;
       this.fooo = Math.sqrt(2);
-      document.addEventListener("keyup", (event) => {
-        console.log("mysqlService");
-        this.setCommand();
-      });
+      //this.setCommand();
     } catch (e) {
       console.log("constructor err!",e);
     }
@@ -33,7 +30,7 @@ class mysqlService {
     }
     else {
       this.instance = new mysqlService();
-      console.log("mysqlService ERROR!");
+      console.log("mysqlService has no instance!");
 
       return this.instance;
     }
@@ -65,6 +62,18 @@ class mysqlService {
       });
     });
   }
+  myFirstPromise = new Promise((resolve, reject) => {
+    // 當非同步作業成功時，呼叫 resolve(...),而失敗時則呼叫 reject(...)。
+    // 在這個例子中，使用 setTimeout(...) 來模擬非同步程式碼。
+    // 在實務中，您將可能使用像是 XHR 或者一個 HTML5 API.
+    setTimeout(function(){
+      resolve("myFirstPromise Success!"); // Yay！非常順利！
+    }, 10000);
+  });
+  
+
+
+
   onGeneratedRow(row, connection) {
     if (row.constructor.name == 'RowDataPacket') {
       console.log('First Name: ', row.FirstName);
